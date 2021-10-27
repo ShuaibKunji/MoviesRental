@@ -74,6 +74,5 @@ D:\Documents\MVC ASP.NET\Movies-Rental\bin\Antlr3.Runtime.pdb
 D:\Documents\MVC ASP.NET\Movies-Rental\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Documents\MVC ASP.NET\Movies-Rental\obj\Debug\Movies-Rental.csproj.AssemblyReference.cache
 D:\Documents\MVC ASP.NET\Movies-Rental\obj\Debug\Movies-Rental.csproj.CoreCompileInputs.cache
-D:\Documents\MVC ASP.NET\Movies-Rental\obj\Debug\Movies-Rental.csproj.CopyComplete
 D:\Documents\MVC ASP.NET\Movies-Rental\obj\Debug\Movies-Rental.dll
 D:\Documents\MVC ASP.NET\Movies-Rental\obj\Debug\Movies-Rental.pdb

@@ -23,7 +23,7 @@ namespace Movies_Rental
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/darkly.css",
                       "~/Content/site.css"));
         }
     }
