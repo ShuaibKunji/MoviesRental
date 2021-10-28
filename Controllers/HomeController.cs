@@ -1,30 +1,29 @@
-﻿using System;
+﻿using MoviesRental.DAL;
+using MoviesRental.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Movies_Rental.Controllers
+namespace MoviesRental.Controllers
 {
     public class HomeController : Controller
     {
+        private StoreContext db = new StoreContext();
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Movies()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(db.Movies.ToList());
         }
 
-        public ActionResult Contact()
+        public ActionResult Customers()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(db.Customers.ToList());
         }
     }
 }

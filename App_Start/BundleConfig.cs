@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Movies_Rental
+namespace MoviesRental
 {
     public class BundleConfig
     {
@@ -25,6 +25,7 @@ namespace Movies_Rental
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/darkly.css",
                       "~/Content/site.css"));
+            bundles.Add(new Bundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
         }
     }
 }
