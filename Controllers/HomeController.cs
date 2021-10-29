@@ -15,15 +15,5 @@ namespace MoviesRental.Controllers
         {
             return View();
         }
-
-        public ActionResult Movies()
-        {
-            return View(db.Movies.ToList());
-        }
-
-        public ActionResult Customers()
-        {
-            return View(db.Customers.ToList());
-        }
     }
 }

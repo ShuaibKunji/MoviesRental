@@ -76,11 +76,13 @@ namespace MoviesRental.DAL
             {
                 new Ledger
                 {
+                    BorrowDate = DateTime.Parse("2021-10-28"),
                     CustomerID = 1,
                     MovieID = 3
                 },
                 new Ledger
                 {
+                    BorrowDate = DateTime.Parse("2021-10-27"),
                     CustomerID = 1,
                     MovieID = 2
                 }
