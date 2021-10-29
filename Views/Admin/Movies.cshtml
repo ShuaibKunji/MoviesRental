@@ -8,15 +8,15 @@
 <h2>Movies</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "MovieCreate", null, new { @class = "btn btn-success" })
 </p>
-<table class="table">
+<table class="table" style="width:100%">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MName)
+            Title
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            Released On
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Copies)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MovieID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MovieID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MovieID })
+                @Html.ActionLink("Edit", "MovieEdit", new { id = item.MovieID }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Details", "MovieDetails", new { id = item.MovieID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "MovieDelete", new { id = item.MovieID }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

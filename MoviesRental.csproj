@@ -124,6 +124,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="DAL\StoreInitializer.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Ledger.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,12 +189,17 @@
     <Content Include="Views\Admin\Movies.cshtml" />
     <Content Include="Views\Admin\Customers.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\MovieCreate.cshtml" />
+    <Content Include="Views\Admin\MovieDelete.cshtml" />
+    <Content Include="Views\Admin\MovieDetails.cshtml" />
+    <Content Include="Views\Admin\MovieEdit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\CustCreate.cshtml" />
+    <Content Include="Views\Admin\CustDelete.cshtml" />
+    <Content Include="Views\Admin\CustDetails.cshtml" />
+    <Content Include="Views\Admin\CustEdit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
