@@ -64,7 +64,7 @@ namespace MoviesRental.Controllers
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Customers");
+                return RedirectToAction("Index","Customers", new { id = customer.CustomerID });
             }
             return View(customer);
         }
