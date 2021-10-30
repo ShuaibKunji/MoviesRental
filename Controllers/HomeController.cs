@@ -15,5 +15,19 @@ namespace MoviesRental.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Customers", new { id = customer.CustomerID });
+            }
+
+            return View(customer);
+        }
     }
 }

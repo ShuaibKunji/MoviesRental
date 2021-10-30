@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\Ledger.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Register.cs" />
@@ -199,7 +200,11 @@
     <Content Include="Views\Admin\CustDelete.cshtml" />
     <Content Include="Views\Admin\CustDetails.cshtml" />
     <Content Include="Views\Admin\CustEdit.cshtml" />
+    <Content Include="Views\Shared\_Cust.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\AccountSettings.cshtml" />
+    <Content Include="Views\Admin\AccountSettings.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

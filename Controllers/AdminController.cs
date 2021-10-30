@@ -108,7 +108,6 @@ namespace MoviesRental.Controllers
             return View(movie);
         }
 
-        // POST: Admin/Delete/5
         [HttpPost, ActionName("MovieDelete")]
         [ValidateAntiForgeryToken]
         public ActionResult MovieDeleteConfirmed(int id)
@@ -137,9 +136,6 @@ namespace MoviesRental.Controllers
             return View();
         }
 
-        // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CustCreate([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
@@ -204,6 +200,33 @@ namespace MoviesRental.Controllers
             db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Customers");
+        }
+
+        public ActionResult AccountSettings(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer cust = db.Customers.Find(id);
+            if (cust == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cust);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AccountSettings([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Customers");
+            }
+            return View(customer);
         }
 
         protected override void Dispose(bool disposing)

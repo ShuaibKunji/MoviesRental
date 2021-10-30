@@ -1,9 +1,11 @@
 ﻿<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            @Html.ActionLink("MVC Movie Rental", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })            
+            @Html.ActionLink("MVC Movie Rental", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             @Html.ActionLink("Movies", "Movies", "Admin", null, new { @class = "btn btn-primary" })
             @Html.ActionLink("Customers", "Customers", "Admin", null, new { @class = "btn btn-secondary" })
+            @Html.ActionLink("Settings", "AccountSettings", "Admin", new { id = 1 }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Log out", "Index", "Home", null, new { @class = "btn btn-danger" })
         </div>
     </div>
 </div>
