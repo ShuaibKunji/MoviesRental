@@ -29,8 +29,7 @@ namespace MoviesRental.Controllers
             List<Movie> movies = new List<Movie>();
             foreach (var m in db.Movies)
             {
-                if (m.Copies > 0)
-                    movies.Add(new Movie { MName = m.MName, Description = m.Description, Copies = m.Copies, ReleaseDate = m.ReleaseDate });
+                movies.Add(new Movie { MovieID = m.MovieID, MName = m.MName, Description = m.Description, Copies = m.Copies, ReleaseDate = m.ReleaseDate });
             }
             return (movies);
         }
@@ -67,6 +66,37 @@ namespace MoviesRental.Controllers
                 return RedirectToAction("Index","Customers", new { id = customer.CustomerID });
             }
             return View(customer);
+        }
+
+        public ActionResult Borrow(int mid, int cid, DateTime bd)
+        {
+            if(mid != 0 && cid != 0 && bd != null)
+            {
+                Ledger l = new Ledger();
+                l.CustomerID = cid;
+                l.MovieID = mid;
+                l.BorrowDate = bd;
+                db.Ledgers.Add(l);
+                //db.Movies.Find(l.MovieID).Copies -= 1;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Customers", new { id = cid });
+            }
+            return RedirectToAction("Index", "Customers", new { id = cid });
+        }
+
+        public ActionResult Return(string mname, string cname, DateTime bd)
+        {
+            var mid = db.Movies.Where(m => m.MName == mname).FirstOrDefault().MovieID;
+            var cid = db.Customers.Where(c => c.CName == cname).FirstOrDefault().CustomerID;
+            Ledger l = db.Ledgers.Where(i => i.MovieID == mid && i.CustomerID == cid && i.BorrowDate == bd).FirstOrDefault();
+            if(l!=null)
+            {
+                db.Ledgers.Remove(l);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Customers", new { id = cid });
+            }
+            else
+                return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)

@@ -12,8 +12,6 @@ namespace MoviesRental.Models
         public DateTime BorrowDate { get; set; }
         public int MovieID { get; set; }
         public int CustomerID { get; set; }
-        public virtual Movie Movie { get; set; }
-        public virtual Customer Customer { get; set; }
 
     }
 }

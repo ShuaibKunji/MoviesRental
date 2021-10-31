@@ -3,45 +3,13 @@
 	Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 @section Scripts{
-	<script>
-	var rendered = "";
-	$("#LoginButton").click(function () {
-
-		if (rendered != "login") {
-			$.ajax({
-				url: '/Home/Login',
-				dataType: 'html',
-				success: function (data) {
-					$('#content').html(data);
-					rendered = "login";
-				}
-			});
-		}
-	});
-		$("#RegButton").click(function () {
-
-			if (rendered!="register") {
-
-				$.ajax({
-					url: '/Home/Register',
-					dataType: 'html',
-					success: function (data) {
-						$('#content').html(data);
-						rendered = "register";
-					}
-				});
-			}
-		});
-	</script>
+	<script type="text/javascript" src="~/Scripts/pvtoggle.js"></script>
 }
 <!DOCTYPE html>
 
 <html>
 <body>
 	<h1>MVC Movie Rental</h1>
-	<div>
-		Welcome! Please enter your details to continue.
-	</div>
 	<div class="row">
 		<div class="col-lg-12" id="index-subnavigation">
 			<div class="btn-group" style=" margin-bottom: 10px; margin-top: 10px;">

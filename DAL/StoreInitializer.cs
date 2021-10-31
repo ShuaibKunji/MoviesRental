@@ -68,6 +68,14 @@ namespace MoviesRental.DAL
                     Password = "tcust1@123",
                     Address = "357/A, Vermont Street, Scheffield",
                     Phone = "4862759310"
+                },
+                new Customer
+                {
+                    CName = "Test Cust2",
+                    Email = "tcust2@mvcmr.com",
+                    Password = "tcust2@123",
+                    Address = "357/B, Vermont Street, Scheffield",
+                    Phone = "4862759314"
                 }
             };
             custs.ForEach(s => context.Customers.Add(s));
@@ -77,13 +85,13 @@ namespace MoviesRental.DAL
                 new Ledger
                 {
                     BorrowDate = DateTime.Parse("2021-10-28"),
-                    CustomerID = 1,
+                    CustomerID = 3,
                     MovieID = 3
                 },
                 new Ledger
                 {
                     BorrowDate = DateTime.Parse("2021-10-27"),
-                    CustomerID = 1,
+                    CustomerID = 2,
                     MovieID = 2
                 }
             };
