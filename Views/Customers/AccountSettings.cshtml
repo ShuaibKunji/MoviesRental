@@ -59,7 +59,8 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-success" />
-                @Html.ActionLink("Cancel", "Index", new { id = Model.CustomerID}, new { @class = "btn btn-light" })
+                @Html.ActionLink("Cancel", "Index", new { id = Model.CustomerID }, new { @class = "btn btn-light" })
+                @Html.ActionLink("Delete my account", "Delete", new { id = Model.CustomerID }, new { @class = "btn btn-danger" })
             </div>
         </div>
     </div>

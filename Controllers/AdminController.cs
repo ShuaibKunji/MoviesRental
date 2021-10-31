@@ -11,7 +11,7 @@ using MoviesRental.Models;
 
 namespace MoviesRental.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private StoreContext db = new StoreContext();
 
@@ -112,6 +112,14 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MovieDeleteConfirmed(int id)
         {
+            List<Ledger> tbr = db.Ledgers.ToList().FindAll(
+                delegate (Ledger l)
+                {
+                    return l.MovieID == id;
+                }
+                );
+            foreach (var i in tbr)
+                db.Ledgers.Remove(i);
             Movie movie = db.Movies.Find(id);
             db.Movies.Remove(movie);
             db.SaveChanges();
@@ -196,9 +204,7 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CustDeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
+            this.RemoveCust(id);
             return RedirectToAction("Customers");
         }
 

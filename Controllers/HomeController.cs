@@ -2,6 +2,7 @@
 using MoviesRental.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MoviesRental.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private StoreContext db = new StoreContext();
         public ActionResult Index()

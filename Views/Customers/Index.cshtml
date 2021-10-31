@@ -37,11 +37,11 @@
             <td>
                 @if (item.Copies == 0)
                 {
-                    @Html.Display("Out of stock")
+                    <span>Out of stock</span>
                 }
                 else
                 {
-                    @Html.ActionLink("Borrow", "Borrow", "Customers", new { mid = item.MovieID, cid = Model.custID, bd = DateTime.Now }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Borrow", "Borrow", "Customers", new { mid = item.MovieID, cid = Model.custID, bd = DateTime.Now }, new { @class = "btn btn-success" })
                 }
             </td>
         </tr>
@@ -70,7 +70,7 @@
                 @item.BD
             </td>
             <td>
-                @Html.ActionLink("Return","Return", "Customers", new { mname = item.Movie, cname = item.Customer, bd = item.BD }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Return","Return", "Customers", new { mname = item.Movie, cname = item.Customer, bd = item.BD }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

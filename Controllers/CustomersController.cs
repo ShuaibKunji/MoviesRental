@@ -11,7 +11,7 @@ using MoviesRental.Models;
 
 namespace MoviesRental.Controllers
 {
-    public class CustomersController : Controller
+    public class CustomersController : BaseController
     {
         private StoreContext db = new StoreContext();
         // GET: Customers
@@ -77,7 +77,7 @@ namespace MoviesRental.Controllers
                 l.MovieID = mid;
                 l.BorrowDate = bd;
                 db.Ledgers.Add(l);
-                //db.Movies.Find(l.MovieID).Copies -= 1;
+                this.UpdateMovieCount(mid, -1);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Customers", new { id = cid });
             }
@@ -91,12 +91,19 @@ namespace MoviesRental.Controllers
             Ledger l = db.Ledgers.Where(i => i.MovieID == mid && i.CustomerID == cid && i.BorrowDate == bd).FirstOrDefault();
             if(l!=null)
             {
+                this.UpdateMovieCount(mid, 1);
                 db.Ledgers.Remove(l);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Customers", new { id = cid });
             }
             else
                 return HttpNotFound();
+        }
+
+        public ActionResult Delete(int id)
+        {
+            this.RemoveCust(id);
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)
