@@ -41,5 +41,28 @@ namespace MoviesRental.Controllers
             db.Customers.Remove(customer);
             db.SaveChanges();
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string Email)
+        {
+            var result = !db.Customers.Any(c => c.Email == Email);
+            if (result)
+                return Json(result, JsonRequestBehavior.AllowGet);
+            else
+                return Json("Email in use", JsonRequestBehavior.AllowGet);
+        }
+
+        public Customer checkCust(Customer c)
+        {
+            var temp = db.Customers.Where(t => t.Email == c.Email).FirstOrDefault();
+            if (temp == null)
+                return c;
+            else if (temp.CustomerID != c.CustomerID)
+            {
+                ModelState.AddModelError("Email", "Email already in use");
+                return c;
+            }
+            else
+                return c;
+        }
     }
 }

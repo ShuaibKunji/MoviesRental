@@ -29,6 +29,10 @@
 
     @foreach (var item in Model)
     {
+        if(item.CustomerID == 1)
+        {
+            continue;
+        }
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CName)

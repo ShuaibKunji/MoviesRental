@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MoviesRental.Models
 {
@@ -14,7 +15,7 @@ namespace MoviesRental.Models
         public string CName { get; set; }
 
         [Required(ErrorMessage = "Please enter your email address"), MaxLength(30)]
-        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", ErrorMessage = "Email entered is invalid")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email entered is invalid")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your password (at least 8 characters, including letters- both uppercase and lowercase, numbers and symbols)")]

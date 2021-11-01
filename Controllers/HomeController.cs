@@ -26,6 +26,7 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
         {
+            customer = this.checkCust(customer);
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
@@ -45,20 +46,17 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login([Bind(Include ="email,password")] Credentials user)
         {
-            if(ModelState.IsValid)
+            var temp = db.Customers.Where(a => a.Email == user.email).FirstOrDefault();
+            if (temp == null)
+                ModelState.AddModelError("Email", "This account does not exist");
+            else if (temp.Password != user.password)
+                ModelState.AddModelError("Password", "Password is incorrect");
+            if (ModelState.IsValid)
             {
-                var temp = db.Customers.Where(a => a.Email == user.email).FirstOrDefault();
-                if (temp == null)
-                    return RedirectToAction("Index", user);
-                else if (temp.Password == user.password)
-                {
-                    if (temp.CustomerID == 1)
-                        return RedirectToAction("Index", "Admin");
-                    else
-                        return RedirectToAction("Index", "Customers", new { id = temp.CustomerID });
-                }
+                if (temp.CustomerID == 1)
+                    return RedirectToAction("Index", "Admin");
                 else
-                    return View("Index", user);
+                    return RedirectToAction("Index", "Customers", new { id = temp.CustomerID });
             }
             return View("Index", user);
         }

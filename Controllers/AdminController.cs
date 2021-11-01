@@ -57,6 +57,12 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MovieCreate([Bind(Include = "MovieID,MName,ReleaseDate,Description,Copies")] Movie movie)
         {
+            var temp = db.Movies.Where(t => t.MName == movie.MName).FirstOrDefault();
+            if (temp != null)
+            {
+                if (temp.ReleaseDate == movie.ReleaseDate)
+                    ModelState.AddModelError("MName", "This movie already exists");
+            }
             if (ModelState.IsValid)
             {
                 db.Movies.Add(movie);
@@ -148,6 +154,7 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CustCreate([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
         {
+            customer = this.checkCust(customer);
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
@@ -226,6 +233,7 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AccountSettings([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
         {
+            customer = this.checkCust(customer);
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;

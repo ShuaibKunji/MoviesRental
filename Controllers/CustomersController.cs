@@ -59,6 +59,7 @@ namespace MoviesRental.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AccountSettings([Bind(Include = "CustomerID,CName,Email,Password,Address,Phone")] Customer customer)
         {
+            customer = this.checkCust(customer);
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
