@@ -56,26 +56,26 @@ namespace MoviesRental.DAL
                 new Customer
                 {
                     CName = "Admin",
-                    Email = "Admin@mvcmr.com",
+                    Email = "admin@mvcmr.com",
                     Password = "Admin@123",
                     Address = "456/B, Clemmington Street, Nottingham",
-                    Phone = "2589517536"
+                    Phone = "9463258712"
                 },
                 new Customer
                 {
                     CName = "Test Cust1",
                     Email = "tcust1@mvcmr.com",
-                    Password = "tcust1@123",
+                    Password = "Tcust1@123",
                     Address = "357/A, Vermont Street, Scheffield",
-                    Phone = "4862759310"
+                    Phone = "8453216978"
                 },
                 new Customer
                 {
                     CName = "Test Cust2",
                     Email = "tcust2@mvcmr.com",
-                    Password = "tcust2@123",
+                    Password = "Tcust2@123",
                     Address = "357/B, Vermont Street, Scheffield",
-                    Phone = "4862759314"
+                    Phone = "7359438614"
                 }
             };
             custs.ForEach(s => context.Customers.Add(s));

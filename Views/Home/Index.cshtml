@@ -20,7 +20,18 @@
 	</div>
 
 	<div id="content">
-		@Html.Partial("Login")
+		@if (ViewData.ModelMetadata.ModelType == typeof(MoviesRental.Models.Credentials))
+		{
+			@Html.Partial("Login")
+		}
+		else if (ViewData.ModelMetadata.ModelType == typeof(MoviesRental.Models.Customer))
+		{
+			@Html.Partial("Register")
+		}
+		else
+		{
+			@Html.Partial("Login")
+		}
 	</div>
 </body>
 </html>

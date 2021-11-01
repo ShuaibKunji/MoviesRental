@@ -33,12 +33,12 @@ namespace MoviesRental.Controllers
                 return RedirectToAction("Index", "Customers", new { id = customer.CustomerID });
             }
 
-            return RedirectToAction("Index", "Home");
+            return View("Index",customer);
         }
 
         public ActionResult Login()
         {
-            return View("Login");
+            return View();
         }
 
         [HttpPost]
@@ -49,7 +49,7 @@ namespace MoviesRental.Controllers
             {
                 var temp = db.Customers.Where(a => a.Email == user.email).FirstOrDefault();
                 if (temp == null)
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", user);
                 else if (temp.Password == user.password)
                 {
                     if (temp.CustomerID == 1)
@@ -58,9 +58,9 @@ namespace MoviesRental.Controllers
                         return RedirectToAction("Index", "Customers", new { id = temp.CustomerID });
                 }
                 else
-                    return RedirectToAction("Index", "Home");
+                    return View("Index", user);
             }
-            return RedirectToAction("Index", "Home");
+            return View("Index", user);
         }
 
         protected override void Dispose(bool disposing)
